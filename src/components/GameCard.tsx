@@ -10,14 +10,14 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
 	return (
-		<Card borderRadius={10} overflow="hidden">
+		<Card borderRadius={10} overflow="hidden" width="250px">
 			<Image
 				src={getCroppedImageUrl(game.background_image)}
 				h={{ sm: "300px", md: "250px", lg: "200px" }}
 				objectFit="cover"
 				objectPosition="center"
 			/>
-			<CardBody>
+			<CardBody style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
 				<Heading fontSize="2xl">{game.name}</Heading>
 				<HStack justifyContent="space-between">
 					<PlatformIconList
