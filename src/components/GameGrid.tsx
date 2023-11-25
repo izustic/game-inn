@@ -5,7 +5,7 @@ import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
 
 const GameGrid = () => {
-	const { games, error, isLoading } = useGames();
+	const { data, error, isLoading } = useGames();
 	return (
 		<>
 			{error && <Text>{error}</Text>}
@@ -25,7 +25,7 @@ const GameGrid = () => {
 							<GameCardSkeleton key={index} />
 						</GameCardContainer>
 					))}
-				{games.map((game) => (
+				{data.map((game) => (
 					<GameCardContainer>
 						<GameCard key={game.id} game={game} />
 					</GameCardContainer>
