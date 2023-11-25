@@ -17,7 +17,7 @@ const GameGrid = () => {
 					xl: 5,
 				}}
 				padding="15px"
-				spacing={10}
+				spacing={4}
 			>
 				{isLoading &&
 					Array.from({ length: 20 }).map((_, index) => (
