@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, DependencyList } from "react";
 import apiClient from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
 
@@ -7,8 +7,7 @@ interface FetchResponse<T> {
   results: T[]
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
+const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: DependencyList) => {
   const [data, setData] = useState<T[]>([]);
 	const [error, setError] = useState("");
 	const [isLoading, setLoading]	= useState(false)
@@ -29,6 +28,7 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 			});
 
     return () => controller.abort()
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, deps ? [...deps] : []);
 
   return { data, error, isLoading }
