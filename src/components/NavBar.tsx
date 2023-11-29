@@ -3,11 +3,16 @@ import logo from "../assets/sellit-green.png";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+
+interface Props {
+  onSearch: (searchText: string) => void;
+}  
+
+const NavBar = ({onSearch}: Props) => {
 	return (
 		<HStack justifyContent='space-between' padding="10px">
 			<Image src={logo} boxSize="50px" objectFit="contain" />
-			<SearchInput />
+			<SearchInput onSearch={onSearch}/>
 			<ColorModeSwitch />
 		</HStack>
 	);
